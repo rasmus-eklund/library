@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Diplomata+SC&display=swap" rel="stylesheet">
+    <title>Library</title>
+</head>
+
+<body>
+
+    <header>
+        <div class="add-sort">
+            <svg class="addButton" style="width:80px;height:80px" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M20 14H14V20H10V14H4V10H10V4H14V10H20V14Z" />
+            </svg>
+            <svg class="sortButton" style="width:80px;height:80px" viewBox="0 0 24 24">
+                <path fill="currentColor"
+                    d="M18 21L14 17H17V7H14L18 3L22 7H19V17H22M2 19V17H12V19M2 13V11H9V13M2 7V5H6V7H2Z" />
+            </svg>
+        </div>
+        <div class="head">Library</div>
+    </header>
+    <div class="container">
+        <form class="form" action="">
+
+            <p>Add a book to your library:</p>
+            <div>
+                <label for="title">Title</label>
+                <input class="input" id="title" type="text" minlength="2">
+            </div>
+
+            <div>
+                <label for="author">Author</label>
+                <input class="input" id="author" type="text" minlength="2">
+            </div>
+
+            <div>
+                <label for="pages">Pages</label>
+                <input class="input" id="pages" type="text" minlength="1">
+            </div>
+
+            <div>
+                <label for="read">Read</label>
+                <input class="checkbox" id="read" type="checkbox">
+            </div>
+            <div>
+                <input class="submit" type="submit" id="submit">
+            </div>
+        </form>
+        <div class="library">
+
+        </div>
+    </div>
+</body>
+
+</html>
