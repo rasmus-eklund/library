@@ -6,7 +6,14 @@ const authorForm = document.querySelector('#author')
 const pagesForm = document.querySelector('#pages')
 const readForm = document.querySelector('#read')
 const submit = document.querySelector('.submit')
+const modal = document.querySelector('.modal')
+const closeModal = document.querySelector('.closeModal')
 
+addButton.onclick = function () {
+    modal.style.display = 'block';
+}
+
+closeModal.onclick = closeTheModal;
 
 let myLibrary = [];
 
@@ -23,10 +30,17 @@ function addBookToLibrary() {
     const pages = pagesForm.value;
     const read = readForm.value;
     myLibrary.push(new Book(title, author, pages, read));
-    clearForm()
-    populateLibrary()
 }
 
+function removeBook(index) {
+    myLibrary.splice(index, 1);
+    populateLibrary();
+};
+
+function changeReadStatus(index, read) {
+    myLibrary[index].read = read;
+    populateLibrary();
+}
 
 function clearLibrary() {
     while (library.firstChild) {
@@ -34,7 +48,11 @@ function clearLibrary() {
     }
 }
 
-function clearForm(){
+function closeTheModal() {
+    modal.style.display = "none"
+}
+
+function clearForm() {
     titleForm.value = '';
     authorForm.value = '';
     pagesForm.value = '';
@@ -57,12 +75,12 @@ function makeBookElement(book, index, arr) {
             element = document.createElement('input');
             element.setAttribute('type', 'checkbox');
             element.checked = value
-            element.addEventListener('change', function(){
+            element.addEventListener('change', function () {
                 changeReadStatus(index, this.checked)
             });
         } else {
             element = document.createElement('p');
-            element.textContent = book[attrName];
+            element.textContent = `${attrName.charAt(0).toUpperCase() + attrName.slice(1)}: ${value}`;
         }
         element.className = attrName;
         div.appendChild(element);
@@ -70,32 +88,29 @@ function makeBookElement(book, index, arr) {
     let svg = document.createElementNS("http://www.w3.org/2000/svg", 'svg')
     let path = document.createElementNS("http://www.w3.org/2000/svg", 'path')
     svg.setAttribute('viewbox', '0 0 24 24');
-    svg.setAttribute('width','40px');
-    svg.setAttribute('height','40px');
-    svg.setAttribute('id', index);
+    svg.setAttribute('width', '40px');
+    svg.setAttribute('height', '40px');
     path.setAttribute('d', "M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M7,6H17V19H7V6M9,8V17H11V8H9M13,8V17H15V8H13Z")
     path.setAttribute('fill', 'black');
+    svg.setAttribute('id', index)
     svg.appendChild(path);
     svg.addEventListener('click', function (e) {
         removeBook(parseInt(this.id));
     });
+    let p = document.createElement('p')
+    p.textContent = 'I read this: '
+    div.appendChild(p)
     div.appendChild(svg);
     library.appendChild(div);
 }
 
-function removeBook(index) {
-    myLibrary.splice(index, 1);
-    populateLibrary();
-};
-
-function changeReadStatus(index, read) {
-    myLibrary[index].read = read;
-    populateLibrary();
-}
-
-submit.addEventListener('click', function (event){
-    event.preventDefault()
-    addBookToLibrary()
+submit.addEventListener('click', function (event) {
+    if (form.checkValidity()) {
+        addBookToLibrary()
+        clearForm()
+        closeTheModal()
+    }
+    // event.preventDefault()
     populateLibrary()
 });
 

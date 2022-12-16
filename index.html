@@ -14,7 +14,36 @@
 </head>
 
 <body>
+    <div class="modal">
+        <form class="form" action="">
+            <div class="closeModal">
+                <p>&times;</p>
+            </div>
+            <p>Add a book to your library:</p>
+            <div>
+                <label for="title">Title</label>
+                <input class="input" id="title" type="text" minlength="1" required>
+            </div>
 
+            <div>
+                <label for="author">Author</label>
+                <input class="input" id="author" type="text" minlength="1" required>
+            </div>
+
+            <div>
+                <label for="pages">Pages</label>
+                <input class="input" id="pages" type="text" minlength="1" pattern="\d+" required>
+            </div>
+
+            <div>
+                <label for="read">Read</label>
+                <input class="checkbox" id="read" type="checkbox">
+            </div>
+            <div>
+                <button class="submit" type="submit" id="submit">Submit</button>
+            </div>
+        </form>
+    </div>
     <header>
         <div class="add-sort">
             <svg class="addButton" style="width:80px;height:80px" viewBox="0 0 24 24">
@@ -27,37 +56,7 @@
         </div>
         <div class="head">Library</div>
     </header>
-    <div class="container">
-        <form class="form" action="">
-
-            <p>Add a book to your library:</p>
-            <div>
-                <label for="title">Title</label>
-                <input class="input" id="title" type="text" minlength="2">
-            </div>
-
-            <div>
-                <label for="author">Author</label>
-                <input class="input" id="author" type="text" minlength="2">
-            </div>
-
-            <div>
-                <label for="pages">Pages</label>
-                <input class="input" id="pages" type="text" minlength="1">
-            </div>
-
-            <div>
-                <label for="read">Read</label>
-                <input class="checkbox" id="read" type="checkbox">
-            </div>
-            <div>
-                <input class="submit" type="submit" id="submit">
-            </div>
-        </form>
-        <div class="library">
-
-        </div>
-    </div>
+    <div class="library"></div>
 </body>
 
 </html>
