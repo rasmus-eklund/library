@@ -129,3 +129,7 @@ header {
 .submit {
     padding: 10px 20px;
 }
+
+input:invalid {
+    border: 1px dashed red;
+}
